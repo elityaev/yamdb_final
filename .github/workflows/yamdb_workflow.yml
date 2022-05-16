@@ -61,9 +61,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker pull elityaev/yamdb_final
+            sudo docker pull elityaev/yamdb:latest
             sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run -rm -d -p 5000:5000 elityaev/yamdb_final
+            sudo docker run -rm -d -p 5000:5000 elityaev/yamdb:latest
 
   send_message:
     runs-on: ubuntu-latest
