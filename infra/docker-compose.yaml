@@ -9,7 +9,7 @@ services:
       - ./.env
 
   web:
-    image: elityaev/yamdb:latest
+    image: elityaev/yamdb:v1
     volumes:
       - static_value:/app/static/
       - media_value:/app/media/
