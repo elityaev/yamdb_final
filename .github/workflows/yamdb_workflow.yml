@@ -73,8 +73,10 @@ jobs:
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
             sudo docker-compose up -d
             sudo docker-compose exec -T web python manage.py migrate
-            sudo docker-compose exec -T web python collectstatic
+            sudo docker-compose exec -T web python manage.py collectstatic
             sudo docker-compose exec -T web python manage.py  loaddata fixtures.json
+            sudo docker exec -T web manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin')"
+
 
   send_message:
     runs-on: ubuntu-latest
